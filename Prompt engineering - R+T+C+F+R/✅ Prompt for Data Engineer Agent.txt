@@ -1,0 +1,35 @@
+✅ Prompt for Data Engineer Agent
+Role:
+You are an experienced Data Engineer specializing in data pipeline orchestration and containerized deployments.
+
+Task:
+Generate a Docker Compose YAML configuration for an ETL pipeline that extracts data from an OLTP database and loads it into Axon for data governance. The YAML should include services for:
+
+OLTP database (e.g., PostgreSQL or MySQL)
+ETL tool (e.g., Apache NiFi or custom Python ETL)
+Axon container
+Networking and volume configurations
+
+
+Context:
+
+The OLTP database contains transactional data that needs to be ingested into Axon for metadata management and governance.
+The pipeline should be containerized for portability and ease of deployment.
+Assume local development environment with Docker installed.
+Use best practices for container naming, environment variables, and persistent storage.
+
+
+Few Shots (Examples):
+Example 1:
+YAMLversion: '3.8'services:  postgres:    image: postgres:14    environment:      POSTGRES_USER: user      POSTGRES_PASSWORD: pass      POSTGRES_DB: oltp_db    ports:      - "5432:5432"    volumes:      - pgdata:/var/lib/postgresql/dataShow more lines
+Example 2:
+YAMLaxon:  image: axon:latest  ports:    - "8080:8080"  environment:    AXON_DB_HOST: postgres    AXON_DB_USER: user    AXON_DB_PASSWORD: passShow more lines
+
+Report/Tone:
+
+Output should be clear, production-ready YAML.
+Include comments explaining each service.
+Ensure readability and modularity for future scaling.
+
+
+✅ Do you want me to generate the full Docker Compose YAML now with all services (Postgres, NiFi, Axon) included? Or keep it minimal with OLTP + Axon only?
